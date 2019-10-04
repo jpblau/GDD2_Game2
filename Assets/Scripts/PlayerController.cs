@@ -13,8 +13,12 @@ public class PlayerController : MonoBehaviour
     public float constantSpeed; // The speed that we want the player to constantly be moving at to the right
     public float distanceToGround; // The distance at which the player is considered "on the ground." Read from the center of the player
     public bool grounded;  // Whether the player is on the ground or not
+    public List<PhysicMaterial> listOfPhysicsMats;  // the list of all our physics materials, for each playerForm
+    public List<GameObject> listOfFormMeshes;   // the list of all our child gameobjects that we are enabling to swap the mesh of the character
 
     private Rigidbody rb;   // The player's rigidbody which we will apply to forces to
+    //private PhysicMaterial pm; // The player's current physics material, based on their playerForm
+    private GameObject activeChildForm; // The player's active gameobject child, based on the player's current form. 
     
 
     // Start is called before the first frame update
@@ -23,6 +27,8 @@ public class PlayerController : MonoBehaviour
         playerForm = Form.Rock;
 
         rb = this.gameObject.GetComponent<Rigidbody>();
+//pm = this.gameObject.GetComponent<BoxCollider>().material;
+        activeChildForm = listOfFormMeshes[0];
     }
 
     // Update is called once per frame
@@ -75,11 +81,27 @@ public class PlayerController : MonoBehaviour
 
         switch (playerForm)
         {
+            //TODO there's a lot of repeated code here-- is it necessary? 
             case Form.Rock:
+                //pm = listOfPhysicsMats[newForm];
+                //this.gameObject.GetComponent<BoxCollider>().material = pm;
+                activeChildForm.SetActive(false);
+                activeChildForm = listOfFormMeshes[newForm];
+                activeChildForm.SetActive(true);
                 break;
             case Form.Slime:
+                //pm = listOfPhysicsMats[newForm];
+                //this.gameObject.GetComponent<BoxCollider>().material = pm;
+                activeChildForm.SetActive(false);
+                activeChildForm = listOfFormMeshes[newForm];
+                activeChildForm.SetActive(true);
                 break;
             case Form.Balloon:
+                //pm = listOfPhysicsMats[newForm];
+                //this.gameObject.GetComponent<BoxCollider>().material = pm;
+                activeChildForm.SetActive(false);
+                activeChildForm = listOfFormMeshes[newForm];
+                activeChildForm.SetActive(true);
                 break;
         }
     }
