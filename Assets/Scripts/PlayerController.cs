@@ -105,4 +105,21 @@ public class PlayerController : MonoBehaviour
                 break;
         }
     }
+
+
+    /// <summary>
+    /// Checks for collosions between player and environment
+    /// </summary>
+    /// <param name="col">Collision being checked for</param>
+    private void OnCollisionEnter(Collision col)
+    {
+        if(col.gameObject.name=="Spike"&&playerForm==Form.Balloon)
+        {
+            transform.position = new Vector3(-7.28f, 1.98f, 2.39f);
+        }
+        if(col.gameObject.name=="Flag")
+        {
+            currentSpeed = 0;
+        }
+    }
 }
