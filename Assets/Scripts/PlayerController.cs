@@ -16,10 +16,14 @@ public class PlayerController : MonoBehaviour
     public bool grounded;  // Whether the player is on the ground or not
     public List<PhysicMaterial> listOfPhysicsMats;  // the list of all our physics materials, for each playerForm
     public List<GameObject> listOfFormMeshes;   // the list of all our child gameobjects that we are enabling to swap the mesh of the character
+    public float rockMass;
+    public float slimeMass;
+    public float balloonMass;
 
     private Rigidbody rb;   // The player's rigidbody which we will apply to forces to
     //private PhysicMaterial pm; // The player's current physics material, based on their playerForm
     private GameObject activeChildForm; // The player's active gameobject child, based on the player's current form. 
+    private GameManager gm;
     
 
     // Start is called before the first frame update
@@ -30,6 +34,7 @@ public class PlayerController : MonoBehaviour
         rb = this.gameObject.GetComponent<Rigidbody>();
 //pm = this.gameObject.GetComponent<BoxCollider>().material;
         activeChildForm = listOfFormMeshes[0];
+        gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -52,7 +57,8 @@ public class PlayerController : MonoBehaviour
         //Make balloon float
         if (playerForm == Form.Balloon)
         {
-            rb.AddForce(new Vector3(0.0f, floatForce, 0.0f));
+            rb.AddForce(new Vector3(0.0f, floatForce *1.5f, 0.0f));
+            rb.AddForce(new Vector3(constantSpeed / 5, 0.0f, 0.0f));
         }
 
         // Update our current speed calculations
@@ -91,22 +97,19 @@ public class PlayerController : MonoBehaviour
         {
             //TODO there's a lot of repeated code here-- is it necessary? 
             case Form.Rock:
-                //pm = listOfPhysicsMats[newForm];
-                //this.gameObject.GetComponent<BoxCollider>().material = pm;
+                rb.mass = rockMass;
                 activeChildForm.SetActive(false);
                 activeChildForm = listOfFormMeshes[newForm];
                 activeChildForm.SetActive(true);
                 break;
             case Form.Slime:
-                //pm = listOfPhysicsMats[newForm];
-                //this.gameObject.GetComponent<BoxCollider>().material = pm;
+                rb.mass = slimeMass;
                 activeChildForm.SetActive(false);
                 activeChildForm = listOfFormMeshes[newForm];
                 activeChildForm.SetActive(true);
                 break;
             case Form.Balloon:
-                //pm = listOfPhysicsMats[newForm];
-                //this.gameObject.GetComponent<BoxCollider>().material = pm;
+                rb.mass = balloonMass;
                 activeChildForm.SetActive(false);
                 activeChildForm = listOfFormMeshes[newForm];
                 activeChildForm.SetActive(true);
@@ -121,9 +124,12 @@ public class PlayerController : MonoBehaviour
     /// <param name="col">Collision being checked for</param>
     private void OnCollisionEnter(Collision col)
     {
-        if(col.gameObject.name=="Spike"&&playerForm==Form.Balloon)
+        if(col.gameObject.tag.Equals("Spike")&&playerForm==Form.Balloon)
         {
-            transform.position = new Vector3(-7.28f, 1.98f, 2.39f);
+            // Let's restart the level
+            rb.velocity = Vector3.zero;
+            gm.RestartLevel();
+            
         }
         if(col.gameObject.name=="Flag")
         {

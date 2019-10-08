@@ -5,10 +5,13 @@ using UnityEngine;
 /// <summary>
 /// GameManager is unique to each scene, and only appears in levels
 /// It checks for win/loss states, makes sure the player does not get stuck, 
-/// and holds references to tags for different environment obstacles
+/// and holds references to tags for different environment obstacles.
+/// This GameManager should be positioned at the player start position for each level
 /// </summary>
 public class GameManager : MonoBehaviour
 {
+    public GameObject player;   // A reference to the player in this level
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,5 +22,14 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    /// <summary>
+    /// Handles any level functionality for restarting the level.
+    /// Also resets the player's position
+    /// </summary>
+    public void RestartLevel()
+    {
+        player.transform.position = this.transform.position;
     }
 }

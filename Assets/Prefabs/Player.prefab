@@ -95,6 +95,7 @@ MonoBehaviour:
   maxSpeed: 4
   constantSpeed: 18
   distanceToGround: 1.5
+  floatForce: 12
   grounded: 0
   listOfPhysicsMats:
   - {fileID: 13400000, guid: 45e9820291c932848893ebe439621d4a, type: 2}
@@ -192,11 +193,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4185985393568627094}
     m_Modifications:
-    - target: {fileID: 1650096064751666528, guid: 74a2b28f3532f0b42ab0978ca5912a37,
-        type: 3}
-      propertyPath: m_Name
-      value: Rock Boi
-      objectReference: {fileID: 0}
     - target: {fileID: 2359051092230010739, guid: 74a2b28f3532f0b42ab0978ca5912a37,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -252,6 +248,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1650096064751666528, guid: 74a2b28f3532f0b42ab0978ca5912a37,
+        type: 3}
+      propertyPath: m_Name
+      value: Rock Boi
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74a2b28f3532f0b42ab0978ca5912a37, type: 3}
 --- !u!1 &2670517060103256653 stripped
@@ -277,6 +278,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Slime
+      objectReference: {fileID: 0}
+    - target: {fileID: 1845119289563448091, guid: 1e04c399795cce044830d51472367ad9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2593373533321765999, guid: 1e04c399795cce044830d51472367ad9,
         type: 3}

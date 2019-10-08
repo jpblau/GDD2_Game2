@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5892205258884168406}
   - component: {fileID: 6812622472794260280}
   - component: {fileID: 6527795128060215124}
-  - component: {fileID: 8944333731621470271}
+  - component: {fileID: 7675969652006519803}
   m_Layer: 0
   m_Name: Balloon
   m_TagString: Untagged
@@ -80,19 +80,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &8944333731621470271
-BoxCollider:
+--- !u!136 &7675969652006519803
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3566708474291849393}
-  m_Material: {fileID: 13400000, guid: ed95201d9fdff8248a0418e1a9cdf664, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 2, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.64
+  m_Height: 0.24
+  m_Direction: 1
+  m_Center: {x: -0.00011870172, y: 0.000000003259629, z: -0.0030975556}
 --- !u!1001 &2930986609339847278
 PrefabInstance:
   m_ObjectHideFlags: 0
