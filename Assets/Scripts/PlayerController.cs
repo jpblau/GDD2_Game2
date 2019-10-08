@@ -41,14 +41,31 @@ public class PlayerController : MonoBehaviour
     {
         // Check to see if we are grounded
         grounded = IsPlayerOnGround();
+
+        //Add constant force to our player
         if (grounded)
         {
-            // Add a constant veloctiy to our player
-            rb.AddForce(new Vector3(constantSpeed, 0.0f, 0.0f));
+            //If player is balloon, add horizontal and vertical force
+            if (playerForm == Form.Balloon)
+            {
+                rb.AddForce(new Vector3(constantSpeed, 0.05f, 0.0f));
+            }
+
+            //Else, just horizontal
+            else
+            {
+                rb.AddForce(new Vector3(constantSpeed, 0.0f, 0.0f));
+            }
         }
 
         // Update our current speed calculations
         currentSpeed = rb.velocity.magnitude;
+
+        //Make balloon float
+        if (playerForm == Form.Balloon)
+        {
+            rb.AddForce(new Vector3(0.0f, 15.0f, 0.0f));
+        }
     }
 
     /// <summary>
