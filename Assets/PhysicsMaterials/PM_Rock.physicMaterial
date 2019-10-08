@@ -7,7 +7,7 @@ PhysicMaterial:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: PM_Rock
-  dynamicFriction: 3.03
+  dynamicFriction: 6.07
   staticFriction: 0.6
   bounciness: 0
   frictionCombine: 0
