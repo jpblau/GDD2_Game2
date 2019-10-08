@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public float maxSpeed;  // The maximum speed out player can move
     public float constantSpeed; // The speed that we want the player to constantly be moving at to the right
     public float distanceToGround; // The distance at which the player is considered "on the ground." Read from the center of the player
+    public float floatForce = 12.0f;
     public bool grounded;  // Whether the player is on the ground or not
     public List<PhysicMaterial> listOfPhysicsMats;  // the list of all our physics materials, for each playerForm
     public List<GameObject> listOfFormMeshes;   // the list of all our child gameobjects that we are enabling to swap the mesh of the character
@@ -45,27 +46,17 @@ public class PlayerController : MonoBehaviour
         //Add constant force to our player
         if (grounded)
         {
-            //If player is balloon, add horizontal and vertical force
-            if (playerForm == Form.Balloon)
-            {
-                rb.AddForce(new Vector3(constantSpeed, 0.05f, 0.0f));
-            }
-
-            //Else, just horizontal
-            else
-            {
-                rb.AddForce(new Vector3(constantSpeed, 0.0f, 0.0f));
-            }
+            rb.AddForce(new Vector3(constantSpeed, 0.0f, 0.0f));
         }
-
-        // Update our current speed calculations
-        currentSpeed = rb.velocity.magnitude;
 
         //Make balloon float
         if (playerForm == Form.Balloon)
         {
-            rb.AddForce(new Vector3(0.0f, 15.0f, 0.0f));
+            rb.AddForce(new Vector3(0.0f, floatForce, 0.0f));
         }
+
+        // Update our current speed calculations
+        currentSpeed = rb.velocity.magnitude;
     }
 
     /// <summary>
