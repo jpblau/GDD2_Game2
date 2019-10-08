@@ -58,7 +58,7 @@ BoxCollider:
   m_GameObject: {fileID: 4185985393568627091}
   m_Material: {fileID: 13400000, guid: 45e9820291c932848893ebe439621d4a, type: 2}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1.1, y: 1.1, z: 1.1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -105,6 +105,30 @@ MonoBehaviour:
   - {fileID: 2670517060103256653}
   - {fileID: 4933977107287592643}
   - {fileID: 1441672950340989693}
+  masses:
+  - 400
+  - 3
+  - 1
+  drags:
+  - 1
+  - 0
+  - 0
+  rockMass: 100
+  slimeMass: 3
+  balloonMass: 1
+--- !u!135 &3266614273814567920
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4933977107287592643}
+  m_Material: {fileID: 13400000, guid: e255d7c64797cd145962af856f44d5f1, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.28
+  m_Center: {x: 0, y: 0.21, z: 0}
 --- !u!1001 &2701781120241351244
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -172,6 +196,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7675969652006519803, guid: 1367a3496c0487c42ac6d087ac29f6f3,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: ed95201d9fdff8248a0418e1a9cdf664,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1367a3496c0487c42ac6d087ac29f6f3, type: 3}
 --- !u!1 &1441672950340989693 stripped
@@ -193,6 +223,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4185985393568627094}
     m_Modifications:
+    - target: {fileID: 1650096064751666528, guid: 74a2b28f3532f0b42ab0978ca5912a37,
+        type: 3}
+      propertyPath: m_Name
+      value: Rock Boi
+      objectReference: {fileID: 0}
     - target: {fileID: 2359051092230010739, guid: 74a2b28f3532f0b42ab0978ca5912a37,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -248,11 +283,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1650096064751666528, guid: 74a2b28f3532f0b42ab0978ca5912a37,
-        type: 3}
-      propertyPath: m_Name
-      value: Rock Boi
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74a2b28f3532f0b42ab0978ca5912a37, type: 3}
 --- !u!1 &2670517060103256653 stripped
@@ -278,11 +308,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Slime
-      objectReference: {fileID: 0}
-    - target: {fileID: 1845119289563448091, guid: 1e04c399795cce044830d51472367ad9,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2593373533321765999, guid: 1e04c399795cce044830d51472367ad9,
         type: 3}
@@ -337,6 +362,11 @@ PrefabInstance:
     - target: {fileID: 2593373533321765999, guid: 1e04c399795cce044830d51472367ad9,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5381955459295167863, guid: 1e04c399795cce044830d51472367ad9,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

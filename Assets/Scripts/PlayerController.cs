@@ -16,9 +16,8 @@ public class PlayerController : MonoBehaviour
     public bool grounded;  // Whether the player is on the ground or not
     public List<PhysicMaterial> listOfPhysicsMats;  // the list of all our physics materials, for each playerForm
     public List<GameObject> listOfFormMeshes;   // the list of all our child gameobjects that we are enabling to swap the mesh of the character
-    public float rockMass;
-    public float slimeMass;
-    public float balloonMass;
+    public List<float> masses = new List<float>();  // the list of all the masses of each form
+    public List<float> drags = new List<float>();   // the list of all the drags of each form
 
     private Rigidbody rb;   // The player's rigidbody which we will apply to forces to
     //private PhysicMaterial pm; // The player's current physics material, based on their playerForm
@@ -61,6 +60,12 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(new Vector3(constantSpeed / 5, 0.0f, 0.0f));
         }
 
+        // Make the rock fall down super fast
+        if (playerForm == Form.Rock)
+        {
+            rb.AddForce(new Vector3(0.0f, -9.81f * 200, 0.0f));
+        }
+
         // Update our current speed calculations
         currentSpeed = rb.velocity.magnitude;
     }
@@ -97,19 +102,22 @@ public class PlayerController : MonoBehaviour
         {
             //TODO there's a lot of repeated code here-- is it necessary? 
             case Form.Rock:
-                rb.mass = rockMass;
+                rb.mass = masses[newForm];
+                rb.drag = drags[newForm];
                 activeChildForm.SetActive(false);
                 activeChildForm = listOfFormMeshes[newForm];
                 activeChildForm.SetActive(true);
                 break;
             case Form.Slime:
-                rb.mass = slimeMass;
+                rb.mass = masses[newForm];
+                rb.drag = drags[newForm];
                 activeChildForm.SetActive(false);
                 activeChildForm = listOfFormMeshes[newForm];
                 activeChildForm.SetActive(true);
                 break;
             case Form.Balloon:
-                rb.mass = balloonMass;
+                rb.mass = masses[newForm];
+                rb.drag = drags[newForm];
                 activeChildForm.SetActive(false);
                 activeChildForm = listOfFormMeshes[newForm];
                 activeChildForm.SetActive(true);
