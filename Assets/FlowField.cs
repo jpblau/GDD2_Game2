@@ -17,30 +17,24 @@ public class FlowField : MonoBehaviour
     {
         
     }
+  
 
-    private void FixedUpdate()
+
+    private void OnTriggerStay(Collider other)
     {
-        if(this.gameObject.transform.position.x + this.GetComponent<Collider>().bounds.size.x/2 <= player.gameObject.transform.position.x + this.GetComponent<Collider>().bounds.size.x/2 
-            && this.gameObject.transform.position.x - this.GetComponent<Collider>().bounds.size.x/2  >= player.gameObject.transform.position.x - this.GetComponent<Collider>().bounds.size.x/2)
+        
+        if (other.transform.root.name == "Player")
         {
-            Debug.Log("Intersect");
-            player.gameObject.GetComponent<PlayerController>().constantSpeed += .2f;
+            other.transform.root.GetComponent<Rigidbody>().AddForce(new Vector3(100f, 0.0f, 0.0f));
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.name == "Player")
+        if (other.transform.root.name == "Player")
         {
-            collision.gameObject.GetComponent<PlayerController>().constantSpeed += .2f;
+            other.transform.root.GetComponent<Rigidbody>().AddForce(new Vector3(10000f, 0.0f, 0.0f));
         }
     }
 
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.name == "Player")
-        {
-            collision.gameObject.GetComponent<PlayerController>().constantSpeed -= .2f;
-        }
-    }
 }
