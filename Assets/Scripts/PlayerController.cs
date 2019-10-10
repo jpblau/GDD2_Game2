@@ -139,9 +139,10 @@ public class PlayerController : MonoBehaviour
             gm.RestartLevel();
             
         }
-        if(col.gameObject.name=="Flag")
+        if(col.gameObject.tag.Equals("Flag"))
         {
-            currentSpeed = 0;
+            Debug.Log("You Done It");
+            rb.velocity = Vector3.zero;
         }
     }
 }
