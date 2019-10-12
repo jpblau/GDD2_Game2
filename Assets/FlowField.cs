@@ -5,6 +5,9 @@ using UnityEngine;
 public class FlowField : MonoBehaviour
 {
 
+
+    public float startPush; //The intial force that is added when the player first enters the flow field
+    public float constantPush; //The constant push that the player is given the whole time they stay in the field
     public GameObject player;
     // Start is called before the first frame update
     void Start()
@@ -25,7 +28,7 @@ public class FlowField : MonoBehaviour
         
         if (other.transform.root.name == "Player")
         {
-            other.transform.root.GetComponent<Rigidbody>().AddForce(new Vector3(100f, 0.0f, 0.0f));
+            other.transform.root.GetComponent<Rigidbody>().AddForce(new Vector3(constantPush, 0.0f, 0.0f));
         }
     }
 
@@ -33,7 +36,7 @@ public class FlowField : MonoBehaviour
     {
         if (other.transform.root.name == "Player")
         {
-            other.transform.root.GetComponent<Rigidbody>().AddForce(new Vector3(10000f, 0.0f, 0.0f));
+            other.transform.root.GetComponent<Rigidbody>().AddForce(new Vector3(startPush, 0.0f, 0.0f));
         }
     }
 

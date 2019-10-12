@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 
     public float currentSpeed; // The player's current speed
     public float maxSpeed;  // The maximum speed out player can move
+    public float minSpeed; //The minimum speed that the player constantly moves right
     public float constantSpeed; // The speed that we want the player to constantly be moving at to the right
     public float distanceToGround; // The distance at which the player is considered "on the ground." Read from the center of the player
     public float floatForce = 12.0f;
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour
     //private PhysicMaterial pm; // The player's current physics material, based on their playerForm
     private GameObject activeChildForm; // The player's active gameobject child, based on the player's current form. 
     private GameManager gm;
+    private Form previousForm; //The form that the player was in the last run through of the code
     
 
     // Start is called before the first frame update
@@ -50,7 +52,8 @@ public class PlayerController : MonoBehaviour
         //Add constant force to our player
         if (grounded)
         {
-            rb.AddForce(new Vector3(constantSpeed, 0.0f, 0.0f));
+            rb.velocity = new Vector3(minSpeed, rb.velocity.y);
+            //rb.AddForce(new Vector3(constantSpeed, 0.0f, 0.0f));
         }
 
         //Make balloon float
@@ -63,11 +66,29 @@ public class PlayerController : MonoBehaviour
         // Make the rock fall down super fast
         if (playerForm == Form.Rock)
         {
-            rb.AddForce(new Vector3(0.0f, -9.81f * 200, 0.0f));
+            rb.AddForce(new Vector3(0.0f, -9.81f * masses[0], 0.0f));
+            //Adding extra downward force if the player just changed from another form to rock
+            if(previousForm != Form.Rock)
+            {
+                rb.AddForce(new Vector3(0.0f, -9.81f * 1000, 0.0f));
+            }
+        }
+
+        if(rb.velocity.x >= maxSpeed)
+        {
+            Debug.Log("X:" + rb.velocity.x);
+            rb.velocity = new Vector3(maxSpeed, rb.velocity.y);
+        }
+
+        if (rb.velocity.y >= maxSpeed)
+        {
+            Debug.Log("Y:" + rb.velocity.y);
+            rb.velocity = new Vector3(rb.velocity.x, maxSpeed);
         }
 
         // Update our current speed calculations
         currentSpeed = rb.velocity.magnitude;
+        previousForm = playerForm;
     }
 
     /// <summary>
