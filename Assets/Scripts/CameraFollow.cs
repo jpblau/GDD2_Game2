@@ -31,4 +31,30 @@ public class CameraFollow : MonoBehaviour
         Vector3 newPos = positionToFollow - offset;
         this.transform.position = new Vector3(newPos.x, newPos.y, zDistanceFromObject);
     }
+
+    /// <summary>
+    /// The coroutine that handles screen shake
+    /// </summary>
+    /// <param name="dur">The duration the screen should shake at</param>
+    /// <returns></returns>
+    public IEnumerator Shake (float dur, float mag)
+    {
+        Vector3 originalPos = transform.localPosition;
+
+        float elapsed = 0.0f;
+
+        while (elapsed < dur)
+        {
+            float x = Random.Range(-1f, 1f) * mag;
+            float y = Random.Range(-1f, 1f) * mag;
+
+            transform.localPosition = new Vector3(x, y, originalPos.z);
+
+            elapsed += Time.deltaTime;
+
+            yield return null;
+        }
+
+        transform.localPosition = originalPos;
+    }
 }

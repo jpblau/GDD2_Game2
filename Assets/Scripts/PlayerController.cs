@@ -48,8 +48,15 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // Check to see if we are grounded
+        // Check to see if we just hit the ground (also lets set grounded while we're at it)
+        Debug.Log(grounded);
+        bool wasGrounded = grounded;
         grounded = IsPlayerOnGround();
+
+        if (!wasGrounded && grounded)
+        {
+            ui.ShakeCamera(.15f, .05f);
+        }
 
         //Add constant force to our player
         if (grounded)
@@ -68,11 +75,11 @@ public class PlayerController : MonoBehaviour
         // Make the rock fall down super fast
         if (playerForm == Form.Rock)
         {
-            rb.AddForce(new Vector3(0.0f, -9.81f * masses[0], 0.0f));
+            //rb.AddForce(new Vector3(0.0f, -9.81f * masses[0], 0.0f));
             //Adding extra downward force if the player just changed from another form to rock
             if(previousForm != Form.Rock)
             {
-                rb.AddForce(new Vector3(0.0f, -9.81f * 1000, 0.0f));
+                //rb.AddForce(new Vector3(0.0f, -9.81f * 1000, 0.0f));
             }
         }
 
@@ -101,7 +108,6 @@ public class PlayerController : MonoBehaviour
     {
         Ray ray = new Ray(this.transform.position, new Vector3(0.0f, -1.0f, 0.0f));
         RaycastHit hit;
-
         if (Physics.Raycast(ray, out hit)){
             if (hit.distance <= distanceToGround)
             {
