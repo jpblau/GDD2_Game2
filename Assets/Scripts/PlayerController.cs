@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     private GameObject activeChildForm; // The player's active gameobject child, based on the player's current form. 
     private GameManager gm;
     private Form previousForm; //The form that the player was in the last run through of the code
+    private UIManager ui;
     
 
     // Start is called before the first frame update
@@ -36,6 +37,7 @@ public class PlayerController : MonoBehaviour
 //pm = this.gameObject.GetComponent<BoxCollider>().material;
         activeChildForm = listOfFormMeshes[0];
         gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        ui= GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
     }
 
     // Update is called once per frame
@@ -162,8 +164,8 @@ public class PlayerController : MonoBehaviour
         }
         if(col.gameObject.tag.Equals("Flag"))
         {
-            Debug.Log("You Done It");
             rb.velocity = Vector3.zero;
+            ui.winCanvas.gameObject.SetActive(true);
         }
     }
 }

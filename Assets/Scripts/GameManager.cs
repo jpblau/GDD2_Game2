@@ -33,4 +33,7 @@ public class GameManager : MonoBehaviour
         player.transform.position = this.transform.position;
     }
 
+
+
+
 }
