@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/TestScenes/CoriTestScene.unity
+    path: Assets/Scenes/TestScenes/CoriScene1.unity
     guid: b3ffd679e180ab34ebbe5b09b508d045
   - enabled: 1
     path: Assets/Scenes/TestScenes/CoriScene2.unity
