@@ -172,6 +172,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = Vector3.zero;
             ui.winCanvas.gameObject.SetActive(true);
+            Debug.Log("Win");
         }
     }
 }
