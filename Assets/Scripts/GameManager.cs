@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// GameManager is unique to each scene, and only appears in levels
@@ -32,8 +33,5 @@ public class GameManager : MonoBehaviour
     {
         player.transform.position = this.transform.position;
     }
-
-
-
 
 }
