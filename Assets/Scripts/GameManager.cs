@@ -22,7 +22,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.Escape))        //Allows player to exit build
+        {
+            Application.Quit();
+        }
     }
 
     /// <summary>
@@ -33,5 +36,12 @@ public class GameManager : MonoBehaviour
     {
         player.transform.position = this.transform.position;
     }
+
+    public void SwitchLevel(int sceneNum)
+    {
+        SceneManager.LoadScene(sceneNum);
+
+    }
+
 
 }

@@ -171,7 +171,8 @@ public class PlayerController : MonoBehaviour
             // Let's restart the level
             rb.velocity = Vector3.zero;
             gm.RestartLevel();
-            
+            key.gameObject.SetActive(true);
+            hasKey = false;
         }
         if(col.gameObject.tag.Equals("Flag"))
         {
