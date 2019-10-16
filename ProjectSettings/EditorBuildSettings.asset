@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/TestScenes/CoriScene1.unity
+    guid: b3ffd679e180ab34ebbe5b09b508d045
+  - enabled: 1
+    path: Assets/Scenes/TestScenes/CoriScene2.unity
+    guid: 6a2c38e72fb6fa54b8ce4f4c3aaae0eb
+  - enabled: 1
+    path: Assets/Scenes/TestScenes/CoriScene3.unity
+    guid: 2afa7eb484f4ee54ca10a890fa6b7801
   m_configObjects: {}

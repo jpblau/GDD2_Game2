@@ -19,13 +19,17 @@ public class PlayerController : MonoBehaviour
     public List<GameObject> listOfFormMeshes;   // the list of all our child gameobjects that we are enabling to swap the mesh of the character
     public List<float> masses = new List<float>();  // the list of all the masses of each form
     public List<float> drags = new List<float>();   // the list of all the drags of each form
+    public GameObject key;          //Reference to a key in the level
+    public GameObject gate;         //Reference to a gate in the level
 
+    private bool hasKey;     //Bool to check if the player has the key with them
     private Rigidbody rb;   // The player's rigidbody which we will apply to forces to
     //private PhysicMaterial pm; // The player's current physics material, based on their playerForm
     private GameObject activeChildForm; // The player's active gameobject child, based on the player's current form. 
     private GameManager gm;
     private Form previousForm; //The form that the player was in the last run through of the code
     private UIManager ui;
+    
     
 
     // Start is called before the first frame update
@@ -38,6 +42,7 @@ public class PlayerController : MonoBehaviour
         activeChildForm = listOfFormMeshes[0];
         gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         ui= GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
+        hasKey = false;
     }
 
     // Update is called once per frame
@@ -166,13 +171,26 @@ public class PlayerController : MonoBehaviour
             // Let's restart the level
             rb.velocity = Vector3.zero;
             gm.RestartLevel();
-            
+            key.gameObject.SetActive(true);
+            hasKey = false;
         }
         if(col.gameObject.tag.Equals("Flag"))
         {
             rb.velocity = Vector3.zero;
             ui.winCanvas.gameObject.SetActive(true);
-            Debug.Log("Win");
+        }
+        if(col.gameObject.tag.Equals("Key"))
+        {
+            key.gameObject.SetActive(false);
+            hasKey = true;
+        }
+        if (col.gameObject.tag.Equals("Gate")&&hasKey==true)
+        {
+            gate.gameObject.SetActive(false);
+        }
+        if(col.gameObject.tag.Equals("Gate")&&hasKey==false)
+        {
+            gm.RestartLevel();
         }
     }
 }
