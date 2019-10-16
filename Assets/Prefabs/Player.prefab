@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 4185985393568627089}
   - component: {fileID: 4185985393568627090}
   - component: {fileID: 4185985393568627093}
+  - component: {fileID: 3635629889200919841}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -114,6 +115,110 @@ MonoBehaviour:
   - 1
   - 0
   - 0
+  key: {fileID: 0}
+  gate: {fileID: 0}
+  soundFX:
+  - {fileID: 0}
+  - {fileID: 8300000, guid: 1824f827b248c8545be38dd06ac21b41, type: 3}
+  - {fileID: 8300000, guid: 5c254b0dd8f0e7a4cb82c4b1a3ee83ba, type: 3}
+  - {fileID: 8300000, guid: 66e142ad194dec74685fd8c1c1a9b85e, type: 3}
+  - {fileID: 8300000, guid: 83f47f149340cfa4595581e44f0d32e6, type: 3}
+--- !u!82 &3635629889200919841
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4185985393568627091}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!135 &3266614273814567920
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -125,8 +230,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.28
-  m_Center: {x: 0, y: 0.21, z: 0}
+  m_Radius: 0.17
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &2701781120241351244
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -221,6 +326,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4185985393568627094}
     m_Modifications:
+    - target: {fileID: 1650096064751666528, guid: 74a2b28f3532f0b42ab0978ca5912a37,
+        type: 3}
+      propertyPath: m_Name
+      value: Rock Boi
+      objectReference: {fileID: 0}
     - target: {fileID: 2359051092230010739, guid: 74a2b28f3532f0b42ab0978ca5912a37,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -275,11 +385,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -190.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1650096064751666528, guid: 74a2b28f3532f0b42ab0978ca5912a37,
-        type: 3}
-      propertyPath: m_Name
-      value: Rock Boi
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74a2b28f3532f0b42ab0978ca5912a37, type: 3}

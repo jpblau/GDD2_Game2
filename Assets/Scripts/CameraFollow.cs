@@ -39,22 +39,30 @@ public class CameraFollow : MonoBehaviour
     /// <returns></returns>
     public IEnumerator Shake (float dur, float mag)
     {
-        Vector3 originalPos = transform.localPosition;
+        Vector3 originalPos = transform.position;
+        Vector3 newPos = Random.insideUnitSphere * mag;
 
         float elapsed = 0.0f;
 
         while (elapsed < dur)
         {
-            float x = Random.Range(-1f, 1f) * mag;
-            float y = Random.Range(-1f, 1f) * mag;
+            //float x = Random.Range(-1f, 1f) * mag;
+           //float y = Random.Range(-1f, 1f) * mag;
 
-            transform.localPosition = new Vector3(x, y, originalPos.z);
+            //transform.localPosition = new Vector3(x, y, originalPos.z);
 
             elapsed += Time.deltaTime;
+
+            transform.position = new Vector3(originalPos.x + newPos.x * elapsed, originalPos.y + newPos.y * elapsed, originalPos.z);
+
+            if ((transform.position - newPos).magnitude < 0.001f)
+            {
+                newPos = Random.insideUnitSphere * mag;
+            }
 
             yield return null;
         }
 
-        transform.localPosition = originalPos;
+        transform.position = originalPos;
     }
 }
