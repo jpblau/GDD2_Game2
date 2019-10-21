@@ -182,6 +182,13 @@ public class PlayerController : MonoBehaviour
     /// <param name="col">Collision being checked for</param>
     private void OnCollisionEnter(Collision col)
     {
+        if (playerForm == Form.Balloon)
+        {
+            if (col.gameObject.GetComponent<Renderer>().bounds.min.y > activeChildForm.gameObject.GetComponent<Renderer>().bounds.center.y)
+            {
+                rb.AddForce(new Vector3(0, (rb.velocity.y * 500) * .35f));
+            }
+        }
         switch (col.gameObject.tag)
         {
             case "Spike":
@@ -237,6 +244,8 @@ public class PlayerController : MonoBehaviour
                 }
                 break;
         }
+
+        
 
         /*if(col.gameObject.tag.Equals("Spike")&&playerForm==Form.Balloon)
         {
