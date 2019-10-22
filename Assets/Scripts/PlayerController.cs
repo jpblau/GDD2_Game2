@@ -166,6 +166,7 @@ public class PlayerController : MonoBehaviour
     /// <param name="col">Collision being checked for</param>
     private void OnCollisionEnter(Collision col)
     {
+
         if(col.gameObject.tag.Equals("Spike")&&playerForm==Form.Balloon)
         {
             // Let's restart the level
