@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     public List<float> drags = new List<float>();   // the list of all the drags of each form
     public GameObject key;          //Reference to a key in the level
     public GameObject gate;         //Reference to a gate in the level
+    public List<AudioClip> soundFX; // All the sound effects that this object can produce
 
     private bool hasKey;     //Bool to check if the player has the key with them
     private Rigidbody rb;   // The player's rigidbody which we will apply to forces to
@@ -29,6 +30,7 @@ public class PlayerController : MonoBehaviour
     private GameManager gm;
     private Form previousForm; //The form that the player was in the last run through of the code
     private UIManager ui;
+    private AudioSource audioSource;    // The player's audio source for playing sound effects
     
     
 
@@ -42,6 +44,8 @@ public class PlayerController : MonoBehaviour
         activeChildForm = listOfFormMeshes[0];
         gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         ui= GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
+        audioSource = this.gameObject.GetComponent<AudioSource>();
+
         hasKey = false;
     }
 
@@ -54,13 +58,24 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         // Check to see if we just hit the ground (also lets set grounded while we're at it)
-        Debug.Log(grounded);
         bool wasGrounded = grounded;
         grounded = IsPlayerOnGround();
 
-        if (!wasGrounded && grounded)
+        // Shake the camera if we just hit the ground
+        if (!wasGrounded && grounded && transform.position != gm.transform.position)
         {
-            ui.ShakeCamera(.15f, .05f);
+            switch (playerForm)
+            {
+                case Form.Rock:
+                    ui.ShakeCamera(.05f, .1f);
+                    break;
+                case Form.Slime:
+                    ui.ShakeCamera(.02f, .01f);
+                    break;
+                case Form.Balloon:
+                    break;
+            }
+            
         }
 
         //Add constant force to our player
@@ -155,6 +170,7 @@ public class PlayerController : MonoBehaviour
                 activeChildForm.SetActive(false);
                 activeChildForm = listOfFormMeshes[newForm];
                 activeChildForm.SetActive(true);
+                SetAudioClipAndPlay(3);
                 break;
         }
     }
@@ -166,7 +182,72 @@ public class PlayerController : MonoBehaviour
     /// <param name="col">Collision being checked for</param>
     private void OnCollisionEnter(Collision col)
     {
-        if(col.gameObject.tag.Equals("Spike")&&playerForm==Form.Balloon)
+        if (playerForm == Form.Balloon)
+        {
+            if (col.gameObject.GetComponent<Renderer>().bounds.min.y > activeChildForm.gameObject.GetComponent<Renderer>().bounds.center.y)
+            {
+                rb.AddForce(new Vector3(0, (rb.velocity.y * 500) * .35f));
+            }
+        }
+        switch (col.gameObject.tag)
+        {
+            case "Spike":
+                if (playerForm == Form.Balloon)
+                {
+                    // Let's restart the level
+                    rb.velocity = Vector3.zero;
+                    gm.RestartLevel();
+                    key.gameObject.SetActive(true);
+                    hasKey = false;
+                    SetAudioClipAndPlay(4);
+                }
+                break;
+            case "Flag":
+                rb.velocity = Vector3.zero;
+                ui.winCanvas.gameObject.SetActive(true);
+                break;
+            case "Key":
+                key.gameObject.SetActive(false);
+                hasKey = true;
+                break;
+            case "Gate":
+                if (hasKey) gate.gameObject.SetActive(false);
+                else gm.RestartLevel();
+                break;
+            case "Wall":
+                switch (playerForm)
+                {
+                    case Form.Rock:
+                        SetAudioClipAndPlay(1);
+                        break;
+                    case Form.Slime:
+                        SetAudioClipAndPlay(2);
+                        break;
+                    case Form.Balloon:
+                        SetAudioClipAndPlay(0);
+                        break;
+                }
+                audioSource.Play();
+                break;
+            case "Ground":
+                switch (playerForm)
+                {
+                    case Form.Rock:
+                        SetAudioClipAndPlay(1);
+                        break;
+                    case Form.Slime:
+                        SetAudioClipAndPlay(2);
+                        break;
+                    case Form.Balloon:
+                        SetAudioClipAndPlay(0);
+                        break;
+                }
+                break;
+        }
+
+        
+
+        /*if(col.gameObject.tag.Equals("Spike")&&playerForm==Form.Balloon)
         {
             // Let's restart the level
             rb.velocity = Vector3.zero;
@@ -191,6 +272,16 @@ public class PlayerController : MonoBehaviour
         if(col.gameObject.tag.Equals("Gate")&&hasKey==false)
         {
             gm.RestartLevel();
-        }
+        }*/
+    }
+
+    /// <summary>
+    /// Sets the audio source's clip to the provided index, and then plays that sound.
+    /// </summary>
+    /// <param name="index">The index of the sound to play in soundFX. Can pass in 0 for NULL</param>
+    public void SetAudioClipAndPlay(int index)
+    {
+        audioSource.clip = soundFX[index];
+        audioSource.Play();
     }
 }
