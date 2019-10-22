@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// UIManager is persistant throughout all scenes in the game
@@ -28,5 +29,15 @@ public class UIManager : MonoBehaviour
     public void ShakeCamera(float dur, float mag)
     {
         cameraScript.StartCoroutine(cameraScript.Shake(dur, mag));
+    }
+
+    public void LoadScene(string name)
+    {
+        SceneManager.LoadScene(name);
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 }
