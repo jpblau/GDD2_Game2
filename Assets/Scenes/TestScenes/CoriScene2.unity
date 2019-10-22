@@ -1334,6 +1334,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7458610890176433033, guid: a470dd65f7948b24e98988db59b61a82,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1756961973}
     - target: {fileID: 2097494880264333044, guid: a470dd65f7948b24e98988db59b61a82,
         type: 3}
       propertyPath: m_Name
@@ -1399,11 +1404,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7458610890176433033, guid: a470dd65f7948b24e98988db59b61a82,
-        type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1756961973}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a470dd65f7948b24e98988db59b61a82, type: 3}
 --- !u!1001 &810673031
@@ -3878,6 +3878,36 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1905019088, guid: 9c725a515121d3e4b92905599a7d8194, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5201107186874441572, guid: 9c725a515121d3e4b92905599a7d8194,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1756961972}
+    - target: {fileID: 5201107186874441572, guid: 9c725a515121d3e4b92905599a7d8194,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeForm
+      objectReference: {fileID: 0}
+    - target: {fileID: 5201107186874441572, guid: 9c725a515121d3e4b92905599a7d8194,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2589846737007667190, guid: 9c725a515121d3e4b92905599a7d8194,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1756961972}
+    - target: {fileID: 2589846737007667190, guid: 9c725a515121d3e4b92905599a7d8194,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeForm
+      objectReference: {fileID: 0}
+    - target: {fileID: 2589846737007667190, guid: 9c725a515121d3e4b92905599a7d8194,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
       value: 2
       objectReference: {fileID: 0}
