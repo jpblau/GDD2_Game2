@@ -90,10 +90,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.64
-  m_Height: 0.24
+  m_Radius: 0.88434905
+  m_Height: 2.5721302
   m_Direction: 1
-  m_Center: {x: -0.00011870172, y: 0.000000003259629, z: -0.0030975556}
+  m_Center: {x: -0.012459815, y: -0.18196642, z: -0.0030975342}
 --- !u!1001 &1364102136133178398
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -101,11 +101,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5892205258884168406}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 2548d62a8e970c7409d712a0f1200d95,
-        type: 3}
-      propertyPath: m_Name
-      value: Balloon
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 2548d62a8e970c7409d712a0f1200d95,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -175,6 +170,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 2548d62a8e970c7409d712a0f1200d95,
+        type: 3}
+      propertyPath: m_Name
+      value: Balloon
       objectReference: {fileID: 0}
     - target: {fileID: -3205476767519989157, guid: 2548d62a8e970c7409d712a0f1200d95,
         type: 3}
