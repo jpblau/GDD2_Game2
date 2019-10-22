@@ -182,10 +182,6 @@ public class PlayerController : MonoBehaviour
     /// <param name="col">Collision being checked for</param>
     private void OnCollisionEnter(Collision col)
     {
-<<<<<<< HEAD
-
-        if(col.gameObject.tag.Equals("Spike")&&playerForm==Form.Balloon)
-=======
         if (playerForm == Form.Balloon)
         {
             if (col.gameObject.GetComponent<Renderer>().bounds.min.y > activeChildForm.gameObject.GetComponent<Renderer>().bounds.center.y)
@@ -252,7 +248,7 @@ public class PlayerController : MonoBehaviour
         
 
         /*if(col.gameObject.tag.Equals("Spike")&&playerForm==Form.Balloon)
->>>>>>> parent of 5d8cb6a... Revert "Merge branch 'master' of https://github.com/jpblau/GDD2_Game2"
+
         {
             // Let's restart the level
             rb.velocity = Vector3.zero;
