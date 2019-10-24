@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     public GameObject gate;         //Reference to a gate in the level
     public List<AudioClip> soundFX; // All the sound effects that this object can produce
     public float balloonBounceMax; //Max value that the balloon can be
+    public particleSystemHead particleSystemHead; // Our particle system for the game, which we will move around the scene as needed
 
     private bool hasKey;     //Bool to check if the player has the key with them
     private Rigidbody rb;   // The player's rigidbody which we will apply to forces to
@@ -246,6 +247,7 @@ public class PlayerController : MonoBehaviour
                 {
                     case Form.Rock:
                         SetAudioClipAndPlay(1);
+                        particleSystemHead.PlayGroundHit(col.GetContact(0).point);
                         break;
                     case Form.Slime:
                         SetAudioClipAndPlay(2);
