@@ -253,7 +253,7 @@ PrefabInstance:
     - target: {fileID: 7042825728244097395, guid: 301c7d5a0c9b32a43b2d0f460896039d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7042825728244097395, guid: 301c7d5a0c9b32a43b2d0f460896039d,
         type: 3}
@@ -283,6 +283,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4185985393568627093, guid: 938d9fc9ece9d1541bf3d6cd37fe2016,
+        type: 3}
+      propertyPath: constantSpeed
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 4185985393568627093, guid: 938d9fc9ece9d1541bf3d6cd37fe2016,
+        type: 3}
+      propertyPath: balloonBounceMax
+      value: -25
       objectReference: {fileID: 0}
     - target: {fileID: 4185985393568627094, guid: 938d9fc9ece9d1541bf3d6cd37fe2016,
         type: 3}
@@ -322,7 +332,7 @@ PrefabInstance:
     - target: {fileID: 4185985393568627094, guid: 938d9fc9ece9d1541bf3d6cd37fe2016,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4185985393568627094, guid: 938d9fc9ece9d1541bf3d6cd37fe2016,
         type: 3}
@@ -338,11 +348,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4185985393568627093, guid: 938d9fc9ece9d1541bf3d6cd37fe2016,
-        type: 3}
-      propertyPath: constantSpeed
-      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 938d9fc9ece9d1541bf3d6cd37fe2016, type: 3}

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1238,6 +1238,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4185985393568627093, guid: 938d9fc9ece9d1541bf3d6cd37fe2016,
+        type: 3}
+      propertyPath: playerForm
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4185985393568627093, guid: 938d9fc9ece9d1541bf3d6cd37fe2016,
+        type: 3}
+      propertyPath: constantSpeed
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 4185985393568627093, guid: 938d9fc9ece9d1541bf3d6cd37fe2016,
+        type: 3}
+      propertyPath: maxSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4185985393568627093, guid: 938d9fc9ece9d1541bf3d6cd37fe2016,
+        type: 3}
+      propertyPath: masses.Array.data[0]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4185985393568627093, guid: 938d9fc9ece9d1541bf3d6cd37fe2016,
+        type: 3}
+      propertyPath: minSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4185985393568627093, guid: 938d9fc9ece9d1541bf3d6cd37fe2016,
+        type: 3}
+      propertyPath: balloonBounceMax
+      value: -35
+      objectReference: {fileID: 0}
     - target: {fileID: 4185985393568627094, guid: 938d9fc9ece9d1541bf3d6cd37fe2016,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1292,31 +1322,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4185985393568627093, guid: 938d9fc9ece9d1541bf3d6cd37fe2016,
-        type: 3}
-      propertyPath: playerForm
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4185985393568627093, guid: 938d9fc9ece9d1541bf3d6cd37fe2016,
-        type: 3}
-      propertyPath: constantSpeed
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 4185985393568627093, guid: 938d9fc9ece9d1541bf3d6cd37fe2016,
-        type: 3}
-      propertyPath: maxSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4185985393568627093, guid: 938d9fc9ece9d1541bf3d6cd37fe2016,
-        type: 3}
-      propertyPath: masses.Array.data[0]
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4185985393568627093, guid: 938d9fc9ece9d1541bf3d6cd37fe2016,
-        type: 3}
-      propertyPath: minSpeed
-      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4185985393568627089, guid: 938d9fc9ece9d1541bf3d6cd37fe2016,
         type: 3}

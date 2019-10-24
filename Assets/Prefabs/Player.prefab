@@ -123,6 +123,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5c254b0dd8f0e7a4cb82c4b1a3ee83ba, type: 3}
   - {fileID: 8300000, guid: 66e142ad194dec74685fd8c1c1a9b85e, type: 3}
   - {fileID: 8300000, guid: 83f47f149340cfa4595581e44f0d32e6, type: 3}
+  balloonBounceMax: -35
 --- !u!82 &3635629889200919841
 AudioSource:
   m_ObjectHideFlags: 0
@@ -313,16 +314,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4185985393568627094}
     m_Modifications:
-    - target: {fileID: 1845119289563448091, guid: 1e04c399795cce044830d51472367ad9,
-        type: 3}
-      propertyPath: m_Name
-      value: Slime
-      objectReference: {fileID: 0}
-    - target: {fileID: 1845119289563448091, guid: 1e04c399795cce044830d51472367ad9,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2593373533321765999, guid: 1e04c399795cce044830d51472367ad9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -392,6 +383,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.551
+      objectReference: {fileID: 0}
+    - target: {fileID: 1845119289563448091, guid: 1e04c399795cce044830d51472367ad9,
+        type: 3}
+      propertyPath: m_Name
+      value: Slime
+      objectReference: {fileID: 0}
+    - target: {fileID: 1845119289563448091, guid: 1e04c399795cce044830d51472367ad9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e04c399795cce044830d51472367ad9, type: 3}

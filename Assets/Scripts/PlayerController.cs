@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     public GameObject key;          //Reference to a key in the level
     public GameObject gate;         //Reference to a gate in the level
     public List<AudioClip> soundFX; // All the sound effects that this object can produce
+    public float balloonBounceMax; //Max value that the balloon can be
 
     private bool hasKey;     //Bool to check if the player has the key with them
     private Rigidbody rb;   // The player's rigidbody which we will apply to forces to
@@ -184,9 +185,20 @@ public class PlayerController : MonoBehaviour
     {
         if (playerForm == Form.Balloon)
         {
+            //Debug.Log(rb.velocity.y + ":upward force");
             if (col.gameObject.GetComponent<Renderer>().bounds.min.y > activeChildForm.gameObject.GetComponent<Renderer>().bounds.center.y)
             {
-                rb.AddForce(new Vector3(0, (rb.velocity.y * 500) * .35f));
+                //Debug.Log("Value:" + (rb.velocity.y * 500) * -.35f);
+                if ((rb.velocity.y * 500) * -.35f > balloonBounceMax)
+                {
+                    //Debug.Log("Default");
+                    rb.AddForce(new Vector3(0, balloonBounceMax));
+                }
+                else
+                {
+                    //Debug.Log("Not Default");
+                    rb.AddForce(new Vector3(0, (rb.velocity.y * 500) * -.35f));
+                }
             }
         }
         switch (col.gameObject.tag)
