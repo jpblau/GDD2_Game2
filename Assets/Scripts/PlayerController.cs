@@ -49,6 +49,8 @@ public class PlayerController : MonoBehaviour
         audioSource = this.gameObject.GetComponent<AudioSource>();
 
         hasKey = false;
+
+        Debug.Log(rb);
     }
 
     // Update is called once per frame
@@ -84,7 +86,10 @@ public class PlayerController : MonoBehaviour
         if (grounded)
         {
             rb.velocity = new Vector3(minSpeed, rb.velocity.y);
-            //rb.AddForce(new Vector3(constantSpeed, 0.0f, 0.0f));
+            if (playerForm == Form.Slime)
+            {
+                particleSystemHead.PlaySlimeRoll(this.transform.position);
+            }
         }
 
         //Make balloon float
@@ -97,9 +102,9 @@ public class PlayerController : MonoBehaviour
         // Make the rock fall down super fast
         if (playerForm == Form.Rock)
         {
-            //rb.AddForce(new Vector3(0.0f, -9.81f * masses[0], 0.0f));
+            rb.AddForce(new Vector3(0.0f, -9.81f * 2, 0.0f));
             //Adding extra downward force if the player just changed from another form to rock
-            if(previousForm != Form.Rock)
+            if (previousForm != Form.Rock)
             {
                 //rb.AddForce(new Vector3(0.0f, -9.81f * 1000, 0.0f));
             }
@@ -107,13 +112,11 @@ public class PlayerController : MonoBehaviour
 
         if(rb.velocity.x >= maxSpeed)
         {
-            Debug.Log("X:" + rb.velocity.x);
             rb.velocity = new Vector3(maxSpeed, rb.velocity.y);
         }
 
         if (rb.velocity.y >= maxSpeed)
         {
-            Debug.Log("Y:" + rb.velocity.y);
             rb.velocity = new Vector3(rb.velocity.x, maxSpeed);
         }
 
@@ -210,7 +213,7 @@ public class PlayerController : MonoBehaviour
                     // Let's restart the level
                     rb.velocity = Vector3.zero;
                     gm.RestartLevel();
-                    key.gameObject.SetActive(true);
+                    //key.gameObject.SetActive(true);
                     hasKey = false;
                     SetAudioClipAndPlay(4);
                 }

@@ -13,11 +13,15 @@ public class UIManager : MonoBehaviour
     public Canvas winCanvas;
     private CameraFollow cameraScript;
 
+    public List<AudioClip> buttonPressSounds;   //A list of all our button press sounds
+    private AudioSource UIAudioSource; // The UI's audio source
+
     // Start is called before the first frame update
     void Start()
     {
         winCanvas.gameObject.SetActive(false);
         cameraScript = Camera.main.GetComponent<CameraFollow>();
+        UIAudioSource = this.gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -39,5 +43,24 @@ public class UIManager : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+    }
+
+
+    public void Sound_RockButtonPressed()
+    {
+        UIAudioSource.clip = buttonPressSounds[0];
+        UIAudioSource.Play();
+    }
+
+    public void Sound_SlimeButtonPressed()
+    {
+        UIAudioSource.clip = buttonPressSounds[1];
+        UIAudioSource.Play();
+    }
+
+    public void Sound_BalloonButtonPressed()
+    {
+        UIAudioSource.clip = buttonPressSounds[2];
+        UIAudioSource.Play();
     }
 }
