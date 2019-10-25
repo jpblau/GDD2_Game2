@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using NVIDIA.Flex;
 
 public class PlayerController : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class PlayerController : MonoBehaviour
 
     private bool hasKey;     //Bool to check if the player has the key with them
     private Rigidbody rb;   // The player's rigidbody which we will apply to forces to
+    private GameObject spawnedSlime;
     //private PhysicMaterial pm; // The player's current physics material, based on their playerForm
     private GameObject activeChildForm; // The player's active gameobject child, based on the player's current form. 
     private GameManager gm;
@@ -88,9 +90,14 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector3(minSpeed, rb.velocity.y);
             if (playerForm == Form.Slime)
             {
-                particleSystemHead.PlaySlimeRoll(this.transform.position);
+                spawnedSlime.GetComponent<FlexActor>().ApplyImpulse(new Vector3(rb.velocity.x * 100, rb.velocity.y));
+                Debug.Log("moving");
             }
+            //rb.AddForce(new Vector3(constantSpeed, 0.0f, 0.0f));
         }
+
+        if (playerForm == Form.Slime)
+            transform.position = spawnedSlime.transform.position;
 
         //Make balloon float
         if (playerForm == Form.Balloon)
@@ -161,6 +168,8 @@ public class PlayerController : MonoBehaviour
                 activeChildForm.SetActive(false);
                 activeChildForm = listOfFormMeshes[newForm];
                 activeChildForm.SetActive(true);
+                Destroy(spawnedSlime);
+                rb.isKinematic = false;
                 break;
             case Form.Slime:
                 rb.mass = masses[newForm];
@@ -168,6 +177,8 @@ public class PlayerController : MonoBehaviour
                 activeChildForm.SetActive(false);
                 activeChildForm = listOfFormMeshes[newForm];
                 activeChildForm.SetActive(true);
+                spawnedSlime = Instantiate(listOfFormMeshes[1], transform.position, Quaternion.identity);
+                rb.isKinematic = true;
                 break;
             case Form.Balloon:
                 rb.mass = masses[newForm];
@@ -176,6 +187,8 @@ public class PlayerController : MonoBehaviour
                 activeChildForm = listOfFormMeshes[newForm];
                 activeChildForm.SetActive(true);
                 SetAudioClipAndPlay(3);
+                Destroy(spawnedSlime);
+                rb.isKinematic = false;
                 break;
         }
     }
