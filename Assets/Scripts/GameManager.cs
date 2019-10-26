@@ -11,7 +11,7 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class GameManager : MonoBehaviour
 {
-    public GameObject player;   // A reference to the player in this level
+    //public GameObject player;   // A reference to the player in this level
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +34,9 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void RestartLevel()
     {
-        player.transform.position = this.transform.position;
+        //player.transform.position = this.transform.position;
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.name);
     }
 
     public void SwitchLevel(int sceneNum)
