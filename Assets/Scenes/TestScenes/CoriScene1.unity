@@ -4115,7 +4115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToFollow: {fileID: 1860333826}
-  zDistanceFromObject: -40
+  zDistanceFromObject: -44
 --- !u!81 &1120198309
 AudioListener:
   m_ObjectHideFlags: 0
