@@ -205,8 +205,17 @@ public class PlayerController : MonoBehaviour
             //Debug.Log(rb.velocity.y + ":upward force");
             if (col.gameObject.GetComponent<Renderer>().bounds.min.y > activeChildForm.gameObject.GetComponent<Renderer>().bounds.center.y)
             {
+                float bounceCoef;
+                if(rb.velocity.y < 0)
+                {
+                    bounceCoef = .35f;
+                }
+                else
+                {
+                    bounceCoef = -.35f;
+                }
                 //Debug.Log("Value:" + (rb.velocity.y * 500) * -.35f);
-                if ((rb.velocity.y * 500) * -.35f > balloonBounceMax)
+                if ((rb.velocity.y * 500) * bounceCoef > balloonBounceMax)
                 {
                     //Debug.Log("Default");
                     rb.AddForce(new Vector3(0, balloonBounceMax));
@@ -214,7 +223,7 @@ public class PlayerController : MonoBehaviour
                 else
                 {
                     //Debug.Log("Not Default");
-                    rb.AddForce(new Vector3(0, (rb.velocity.y * 500) * -.35f));
+                    rb.AddForce(new Vector3(0, (rb.velocity.y * 500) * bounceCoef));
                 }
             }
         }
