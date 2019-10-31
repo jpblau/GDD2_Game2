@@ -50,7 +50,7 @@ MonoBehaviour:
   m_particleGroup: -1
   m_selfCollide: 0
   m_selfCollideFilter: 0
-  m_fluid: 0
+  m_fluid: 1
   m_massScale: 1
   m_drawParticles: 0
   m_recreateActor: 0

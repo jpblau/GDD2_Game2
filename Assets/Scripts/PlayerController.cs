@@ -35,12 +35,15 @@ public class PlayerController : MonoBehaviour
     private Form previousForm; //The form that the player was in the last run through of the code
     private UIManager ui;
     private AudioSource audioSource;    // The player's audio source for playing sound effects
+    private Vector3 lastVelocity;
+    private float timeSince;
     
     
 
     // Start is called before the first frame update
     void Start()
     {
+        timeSince = 0.0f;
         playerForm = Form.Rock;
 
         rb = this.gameObject.GetComponent<Rigidbody>();
@@ -91,7 +94,6 @@ public class PlayerController : MonoBehaviour
             if (playerForm == Form.Slime)
             {
                 spawnedSlime.GetComponent<FlexActor>().ApplyImpulse(new Vector3(rb.velocity.x * 100, rb.velocity.y));
-                Debug.Log("moving");
             }
             //rb.AddForce(new Vector3(constantSpeed, 0.0f, 0.0f));
         }
@@ -117,7 +119,18 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if(rb.velocity.x >= maxSpeed)
+        if (playerForm == Form.Slime && !grounded)
+        {
+            timeSince += Time.deltaTime;
+            
+            spawnedSlime.GetComponent<FlexActor>().ApplyImpulse(new Vector3(lastVelocity.x * (100- timeSince*100), 9.81f*Time.deltaTime * 80));
+        }
+        else
+        {
+            timeSince = 0.0f;
+        }
+
+        if (rb.velocity.x >= maxSpeed)
         {
             rb.velocity = new Vector3(maxSpeed, rb.velocity.y);
         }
@@ -156,8 +169,10 @@ public class PlayerController : MonoBehaviour
     /// <param name="newForm">The new form the player is to assume</param>
     public void ChangeForm(int newForm)
     {
+        
+
         this.playerForm = (Form)newForm;
-        Debug.Log("Changed Form To: " + playerForm);
+        Debug.Log("Changed Form To: " + playerForm);  
 
         switch (playerForm)
         {
@@ -177,7 +192,9 @@ public class PlayerController : MonoBehaviour
                 activeChildForm.SetActive(false);
                 activeChildForm = listOfFormMeshes[newForm];
                 activeChildForm.SetActive(true);
+                Destroy(spawnedSlime);
                 spawnedSlime = Instantiate(listOfFormMeshes[1], transform.position, Quaternion.identity);
+                lastVelocity = this.gameObject.GetComponent<Rigidbody>().velocity;
                 rb.isKinematic = true;
                 break;
             case Form.Balloon:
